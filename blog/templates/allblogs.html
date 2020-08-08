@@ -46,7 +46,7 @@
   <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">👨🏾‍💻Jordan Joseph</a>
+            <a class="navbar-brand" href="/">👨🏾‍💻Jordan Joseph</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -54,44 +54,28 @@
               <div class="navbar-nav ml-auto">
                 <a class="nav-link" href="#">Resume</a>
                 <a class="nav-link" href="https://www.linkedin.com/in/jordan-joseph-646712146?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BtVTQ4tKFTjm9kTCV%2BhmpoQ%3D%3D">LinkedIn</a>
-                <a class="nav-link" href="blog/">Blog</a>
+                <a class="nav-link active" href="#">Blog</a>
             </div>
             </div>
           </nav>
 </header>
 
 <main role="main">
-
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1>Hi, I'm Jordan.</h1>
-      <p class="lead text-muted">Hey, my name is Jordan Joseph. I’m an innovative software engineer with 2 years of experience managing all aspects of the development process for small to medium-sized projects.</p>
-      <p>
-        <a href="mailto: jordanjoseph94@yahoo.com" class="btn btn-primary my-2">Email Me</a>
-       
-      </p>
-    </div>
-  </section>
-
-  
-  <div class="album py-5 bg-light">
-    <div class="container">
-        <h2>Portfolio</h2>
-      <div class="row">
-          {% for job in jobs.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="{{ job.image.url}}" />
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
-            </div>
-          </div>
-        </div>
-        {% endfor%}
-      </div>
-    </div>
-  </div>
-
+<div class="container">
+<h1 class="text-center pt-3">Welcome to Jordan's blog</h1>
+<br />
+<br />
+<h2>Recent Posts</h2>
+<hr />
+{% for blog in blogs.all %}
+<a href="#"><h3>{{blog.title}}</h3></a>
+{{blog.pub_date}}
+<br />
+<img class="img-fluid" src="{{blog.image.url}}" height="200" width="200"/>
+<br />
+<p>{{blog.body}}</p>
+{% endfor %}
+</div>
 </main>
 
 <footer class="text-muted">
