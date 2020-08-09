@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head>
+    {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Jordan Joseph · Portfolio</title>
+    <title>Jordan's blog</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
 
@@ -52,7 +53,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav ml-auto">
-                <a class="nav-link" href="#">Resume</a>
+                <a class="nav-link" href="{% static 'CV.pdf' %}">Resume</a>
                 <a class="nav-link" href="https://www.linkedin.com/in/jordan-joseph-646712146?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BtVTQ4tKFTjm9kTCV%2BhmpoQ%3D%3D">LinkedIn</a>
                 <a class="nav-link active" href="#">Blog</a>
             </div>
@@ -68,12 +69,12 @@
 <h2>Recent Posts</h2>
 <hr />
 {% for blog in blogs.all %}
-<a href="#"><h3>{{blog.title}}</h3></a>
-{{blog.pub_date}}
+<a href="{% url 'detail' blog.id %}"><h3>{{blog.title}}</h3></a>
+{{blog.pub_date_pretty}}
 <br />
 <img class="img-fluid" src="{{blog.image.url}}" height="200" width="200"/>
 <br />
-<p>{{blog.body}}</p>
+<p>{{blog.summary}}</p>
 {% endfor %}
 </div>
 </main>
