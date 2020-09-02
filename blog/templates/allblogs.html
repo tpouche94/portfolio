@@ -36,6 +36,39 @@
         user-select: none;
       }
 
+      .nav-link{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+      .navbar-brand{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+
+      .h3{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+
+      .bigtext{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+
+      .h2{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+
+      .a{
+        color: orangered;
+        text-decoration: none;
+      }
+      .a:hover{
+        color: black;
+        text-decoration:none;
+        
+      }
+
+      .summary{
+        font-family:sans-serif;
+      }
+
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
@@ -53,8 +86,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav ml-auto">
-                <a class="nav-link" href="{% static 'CV.pdf' %}">Resume</a>
-                <a class="nav-link" href="https://www.linkedin.com/in/jordan-joseph-646712146?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BtVTQ4tKFTjm9kTCV%2BhmpoQ%3D%3D">LinkedIn</a>
+                <a class="nav-link" href="{% static 'CV.pdf' %}" target="blank">Resume</a>
+                <a class="nav-link" href="https://www.linkedin.com/in/jordan-joseph-646712146?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BtVTQ4tKFTjm9kTCV%2BhmpoQ%3D%3D" target="blank">LinkedIn</a>
                 <a class="nav-link active" href="#">Blog</a>
             </div>
             </div>
@@ -63,20 +96,29 @@
 
 <main role="main">
 <div class="container">
-<h1 class="text-center pt-3">Welcome to Jordan's blog</h1>
+<h1 class=" bigtext text-center pt-3">Welcome to Jordan's blog</h1>
 <br />
 <br />
-<h2>Recent Posts</h2>
+<br />
+<h2 class="h2">Recent Posts</h2>
 <hr />
+
 {% for blog in blogs.all %}
-<a href="{% url 'detail' blog.id %}"><h3>{{blog.title}}</h3></a>
+<h3 class="h3">{{blog.title}}</h3>
 {{blog.pub_date_pretty}}
 <br />
 <img class="img-fluid" src="{{blog.image.url}}" height="200" width="200"/>
 <br />
-<p>{{blog.summary}}</p>
+
+<p class="summary">{{blog.summary}}</p>
+<a class="a" href="{% url 'detail' blog.id %}"><p>Continue reading →</p></a>
 {% endfor %}
+
+
 </div>
+
+
+
 </main>
 
 <footer class="text-muted">

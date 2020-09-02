@@ -7,9 +7,11 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
+
+    
     <title>{{ blog.title }}</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
+    
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -36,6 +38,28 @@
         user-select: none;
       }
 
+      .nav-link{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+      .navbar-brand{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+      .title{
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      }
+      .body{
+        text-align:justify;
+      }
+
+      .btn{
+        background-color: black;
+        color: white;
+      }
+
+      .btn :hover{
+        text-decoration: none;
+      }
+
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
@@ -44,17 +68,19 @@
     </style>
    
   </head>
+
   <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="/">👨🏾‍💻Jordan Joseph</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
+              <span class="icon icon-minus" aria-hidden="true"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav ml-auto">
-                <a class="nav-link" href="{% static 'CV.pdf' %}">Resume</a>
-                <a class="nav-link" href="https://www.linkedin.com/in/jordan-joseph-646712146?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BtVTQ4tKFTjm9kTCV%2BhmpoQ%3D%3D">LinkedIn</a>
+                <a class="nav-link" href="{% static 'CV.pdf' %}" target="blank">Resume</a>
+                <a class="nav-link" href="https://www.linkedin.com/in/jordan-joseph-646712146?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BtVTQ4tKFTjm9kTCV%2BhmpoQ%3D%3D" target="blank">LinkedIn</a>
                 <a class="nav-link active" href="#">Blog</a>
             </div>
             </div>
@@ -63,13 +89,48 @@
 
 <main role="main">
     <div class="container">
-    <h1 class="text-center pt-3">{{ blog.title }}</h1>
-    <p class="text-center">{{blog.pub_date}}</p>
+      <br />
+    <h1 class="title text-center pt-3">{{ blog.title }}</h1>
+    <p class="text-center">{{blog.pub_date_pretty}}</p>
     <img class="img-fluid" src="{{blog.image.url}}" height="1000" width="1000"/>
     <br />
     <br />
-    <p>{{blog.body}}</p>
+    <p class="body">{{blog.body}}</p>
+    <br />
+    <hr class="hr--large">
+              
+              
+    {% if questions %}
+    <p>{{questions}}</p>
+    {% endif %}
+
+              <h3 class="text-center">Leave a comment</h3></br>
+             <div class="text-center">
+              <form method="POST" action="{% url  'comment' %}"class="comment-form">
+                {% csrf_token %}
+                Name:
+                <br />
+                <input type="text" name="name" />
+                <br />
+                Email:
+                <br />
+                <input type="email" name="email" />
+                <br />
+                Message:
+                <br />
+                <textarea rows="4" cols="50" name="message"></textarea>
+                <p>Please note, comments must be approved before they are published</p>
+                <input type="submit" class="btn btn=primary" value="Post comment"> 
+                <br />
+                <br />
+
+                
+                  </form>
+                  </div>
+                  
     </div>
+
+    
 </main>
 
 <footer class="text-muted">
